@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { useMarbles } from './lib/useMarbles';
 import OperatorList from './components/OperatorList';
 import MarbleDiagram from './components/MarbleDiagram';
+import { app } from "@/app/lib/firebase";
 
 
 const Home = () => {
+  app.automaticDataCollectionEnabled = true;
+
   const [selectedOp, setSelectedOp] = useState<string>('map');
   const { inputTimelines, outputTimeline, label, moveMarble, moveError } = useMarbles(selectedOp);
 
